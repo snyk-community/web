@@ -1,6 +1,31 @@
 # DADI Web
 
-![Build Status](http://img.shields.io/badge/Release-0.4.1_Beta-green.svg?style=flat-square)&nbsp;![Coverage](https://img.shields.io/badge/Coverage-63%-yellow.svg?style=flat-square)
+## Core Concepts
+
+* [ ] Pages
+  * Creating pages
+  * Routes
+* [ ] Views
+  * Layouts
+  * Page Templates
+  * Partial Templates
+  * Helpers
+  * Filters
+* [ ] Data
+  * Datasources
+  * Globals
+* [x] Logging
+* [ ] Middleware
+  * Creating middleware
+* [ ] Static Pages
+* [ ] Security
+  * CORS
+* [ ] Sessions
+* [ ] Caching
+
+
+##### Is something missing?
+If you notice something we've missed or could be improved on, please follow this link and submit a pull request to the sails-docs repo. Once we merge it, the changes will be reflected on the website the next time it is deployed.
 
 ## Contents
 
