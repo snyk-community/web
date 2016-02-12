@@ -20,7 +20,7 @@
 * [ ] Static Pages
 * [ ] Security
   * CORS
-* [ ] Sessions
+* [Sessions](https://github.com/dadi/web/blob/docs/docs/sessions.md)
 * [ ] Caching
 
 
