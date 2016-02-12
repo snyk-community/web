@@ -22,6 +22,8 @@
   * CORS
 * [Sessions](https://github.com/dadi/web/blob/docs/docs/sessions.md)
 * [ ] Caching
+* [Development](https://github.com/dadi/web/blob/docs/docs/development.md)
+* [Contributing](https://github.com/dadi/web/blob/docs/docs/contributingGuidelines.md)
 
 
 ##### Is something missing?
@@ -37,7 +39,6 @@ If you notice something we've missed or could be improved on, please follow this
 * [Running the demo application](#running-the-demo-application)
 * [Running the server](#running-the-server)
 * [Further reading](#further-reading)
-* [Development](#development)
 
 ## TODO
 * Add config documentation for new "paths" block, and the deprecated `workspace` default
@@ -156,33 +157,6 @@ The `docs/` directory contains additional documentation on the component parts o
 
 Feel free to contact the dadi core development team on team@bant.am with questions.
 
-## Development
-
-DADI Web was conceived, developed and is maintained by the engineering team at DADI+ ([https://dadi.co](https://dadi.co)).
-
-Core contributors:
-
-* Joseph Denne
-* Viktor Fero
-* James Lambie
-* Dave Longworth
-
-### Roadmap
-
-We will capture planned updates and additions here. If you have anything to contribute in terms of future direction, please add as an enhancement request within [issues](https://github.com/dadi/web/issues).
-
-
-### Versioning
-
-Semantic Versioning 2.0.0
-
-Given a version number MAJOR.MINOR.PATCH, increment the:
-
-* MAJOR version when you make incompatible API changes,
-* MINOR version when you add functionality in a backwards-compatible manner, and
-* PATCH version when you make backwards-compatible bug fixes.
-
-_Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR.PATCH format._
 
 ### Contributing
 
