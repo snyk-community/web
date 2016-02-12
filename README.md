@@ -2,9 +2,10 @@
 
 ## Core Concepts
 
-* [ ] Pages
+* [Pages](https://github.com/dadi/web/blob/docs/docs/pages.md)
   * Creating pages
   * Routes
+  * [ ] Static Pages
 * [ ] Views
   * Layouts
   * Page Templates
@@ -17,7 +18,6 @@
 * [Logging](https://github.com/dadi/web/blob/docs/docs/logging.md)
 * [ ] Middleware
   * Creating middleware
-* [ ] Static Pages
 * [ ] Security
   * CORS
 * [Sessions](https://github.com/dadi/web/blob/docs/docs/sessions.md)
@@ -32,7 +32,6 @@ If you notice something we've missed or could be improved on, please follow this
 ## Contents
 
 * [Overview](#overview)
-* [Pages](docs/page_specification.md)
 * [Datasources](docs/datasource_specification.md)
 * [Setup and installation](#setup-and-installation)
 * [Configuration](#configuration)
