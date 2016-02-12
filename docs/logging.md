@@ -1,10 +1,18 @@
+# DADI Web
+
 ## Logging
+
+* [Basic Logging](#basic-logging)
+* [Default Configuration](#default-configuration)
+* [Configuration Properties](#configuration-properties)
+* [Request Logging](#request-logging)
+* [Viewing the logs](#viewing-the-logs)
 
 ### Basic Logging
 
-DADI Web starts with a default configuration for logging which enables both error/event logging and HTTP request logging. 
+DADI Web starts with a default configuration for logging which enables both error/event logging and HTTP request logging.
 
-To disable logging, simply add a `logging` section to your configuration file and set `enabled` to `false`. To change the name and location of your log files, simply change the `path`, `filename` and `extension` properties. 
+To disable logging, simply add a `logging` section to your configuration file and set `enabled` to `false`. To change the name and location of your log files,  change the `path`, `filename` and `extension` properties.
 
 DADI Web checks for the existence of the configured log path at startup, and creates it if necessary.
 
@@ -13,6 +21,7 @@ DADI Web checks for the existence of the configured log path at startup, and cre
 ```
 "logging": {
   "enabled": true,
+  "level": "info",
   "path": "./log",
   "filename": "web",
   "extension": "log",
@@ -28,28 +37,29 @@ DADI Web checks for the existence of the configured log path at startup, and cre
 }
 ```
 
-### Configuration Properties 
+### Configuration Properties
 
 Property       | Description        |  Type        | Default         |  Example
 :----------------|:------------|:------------------|:----------------|:---------
-enabled            | If true, logging is enabled   | Boolean     | true | 
-path            | The path relative to the root of the application where log files should be stored   | String     | "./log" | "/var/log/web" 
-filename            |     | String     |"web" | "your-application-name" 
+enabled            | If true, logging is enabled   | Boolean     | true |
+level            | Sets the logging level   | String     | "info" | "warn"
+path            | The path relative to the root of the application where log files should be stored   | String     | "./log" | "/var/log/web"
+filename            |     | String     |"web" | "your-application-name"
 extension            |     | String     |"log" | "txt"
-  -          |    |   |  | 
-**accessLog**            | **Allows configuration of HTTP request logging**   |   |  | 
-accessLog.enabled            | If true, HTTP requests are logged to a separate file. The filename used will be a combination of `logging.filename` + access + `logging.extension`. For example, `web.access.log`  | Boolean     | true | 
+  -          |    |   |  |
+**accessLog**            | **Allows configuration of HTTP request logging**   |   |  |
+accessLog.enabled            | If true, HTTP requests are logged to a separate file. The filename used will be a combination of `logging.filename` + access + `logging.extension`. For example, `web.access.log`  | Boolean     | true |
 accessLog.fileRotationPeriod            | The period at which to rotate the access log file. This is a string of the format '$number$scope' where '$scope' is one of 'ms' (milliseconds), 'h' (hours), 'd' (days), 'w' (weeks), 'm' (months), 'y' (years).  | String     | "1d" | "1w", "2w". In addition, the following names can be used "hourly", "daily", "weekly", "monthly", "yearly".
 accessLog.fileRetentionCount            | The number of rotated log files to keep  | Number     | 7 | 14
 accessLog.kinesisStream            | The name of an AWS Kinesis stream to write to log records to | String     | Empty, therefore disabled  | "webAppLogStream"
-  -          |    |   |  | 
-**sentry**            | **Allows sending events to a Sentry server**   |   |  | 
-sentry.dsn            | A DSN key as provided by your Sentry integration   |   | "https://693ef18da3184cffa82144fde2979cbc:a0651b0286784761a62ef8e8fc128722@app.getsentry.com/59524" | 
+  -          |    |   |  |
+**sentry**            | **Allows sending events to a Sentry server**   |   |  |
+sentry.dsn            | A DSN key as provided by your Sentry integration   |   | "https://693ef18da3184cffa82144fde2979cbc:a0651b0286784761a62ef8e8fc128722@app.getsentry.com/59524" |
 
 
 ### Using the logger in your own modules
 
-DADDY Web exposes it's log module so you can use it within your own modules or events. Use the following code to get a reference to the log, then call one of the log methods to send data to the log file. Available log methods are `debug`, `info`, `warn`, `error`, `trace`. 
+DADI Web exposes it's log module so you can use it within your own modules or events. Use the following code to get a reference to the log, then call one of the log methods to send data to the log file. Available log methods are `debug`, `info`, `warn`, `error`, `trace`.
 
 ```
 var Logger = require('dadi-api').Log;
@@ -61,7 +71,7 @@ log.error(new Error('Something bad happened'));
 
 #### Adding a module identifier to log records
 
-To make it easier to identify log records from your own modules or events, you can create a child logger from the main DADI Web log module. 
+To make it easier to identify log records from your own modules or events, you can create a child logger from the main DADI Web log module.
 
 ```
 var Logger = require('dadi-api').Log;
@@ -81,6 +91,7 @@ Log records created using the above child logger will include a property contain
 ```
 "logging": {
   "enabled": true,
+  "level": "info",
   "path": "./log",
   "filename": "web",
   "extension": "log",
@@ -189,7 +200,7 @@ $ tail log/web.log | bunyan -l warn
 
 DADI Web contains functionality to integrate your application with [Sentry](https://getsentry.com/welcome/), a real-time crash reporting solution.
 
-Whether you already have an account with the cloud-hosted version of Sentry, or are hosting your own server, it is easy to start sending data from your DADI Web application. 
+Whether you already have an account with the cloud-hosted version of Sentry, or are hosting your own server, it is easy to start sending data from your DADI Web application.
 
 Simply locate or create your project's Sentry DSN under Settings > Client Keys. Copy the DSN to your configuration file so it looks similar to the following (some properties omitted for brevity):
 
@@ -200,4 +211,3 @@ Simply locate or create your project's Sentry DSN under Settings > Client Keys. 
   }
 }
 ```
-
