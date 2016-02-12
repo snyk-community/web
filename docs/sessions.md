@@ -39,8 +39,8 @@ A full configuration block for sessions contains the following properties:
 
 #### Configuration Properties
 
-Property      | Description        |  Default                                  | Example
----------------|--------------------|-------------------------------------------|--------
+Property      | Description        |  Default                                  
+---------------|--------------------|-------------------------------------------
 enabled  | If `true`, sessions are enabled. | false
 name | The session cookie name. | "dadiweb.sid"
 secret | The secret used to sign the session ID cookie. This can be either a string for a single secret, or an array of multiple secrets. If an array of secrets is provided, only the first element will be used to sign the session ID cookie, while all the elements will be considered when verifying the signature in requests. | "dadiwebsecretsquirrel"
@@ -49,7 +49,7 @@ saveUninitialized | Forces a session that is "uninitialized" to be saved to the 
 store | The session store instance, defaults to a new MemoryStore instance. | The default is an string, which uses a new MemoryStore instance. To use MongoDB: `"mongodb://username:password@host/databaseName"`, to use Redis: `"127.0.0.1:6379"`.
 cookie  | |
 cookie.maxAge | Set the cookie’s expiration as an interval of seconds in the future, relative to the time the browser received the cookie. Null means no 'expires' parameter is set so the cookie becomes a browser-session cookie. When the user closes the browser the cookie (and session) will be removed. | 60000
-cookie.secure | HTTPS is necessary for secure cookies. If `secure` is `true` and you access your site over HTTP, the cookie will not be set. | false 
+cookie.secure | HTTPS is necessary for secure cookies. If `secure` is `true` and you access your site over HTTP, the cookie will not be set. | false
 
 
 #### Using the session
