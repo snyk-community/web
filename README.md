@@ -14,7 +14,7 @@
 * [ ] Data
   * Datasources
   * Globals
-* [x] Logging
+* [Logging](https://github.com/dadi/web/blob/docs/docs/logging.md)
 * [ ] Middleware
   * Creating middleware
 * [ ] Static Pages
