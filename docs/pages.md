@@ -19,7 +19,7 @@ A `page` on your website consists of two files within your application's file st
 
 Page Specifications exist as JSON files in your application's `pages` folder. The location of this folder is configurable, but defaults to `app/pages`.
 
-Template files are stored in the same folder as the page specifications and have a `.dust` extension. Unless the page specification contains an explicit `template` property, the template name should match the page specification name.
+Template files are stored in the same folder as the page specifications and have a `.dust` extension. Unless the page specification contains an explicit `template` property, the template name should match the page specification name. See [Views](https://github.com/dadi/web/blob/docs/docs/views.md#page-templates) for further documentation.
 
 ```
 my-web/
