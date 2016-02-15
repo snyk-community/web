@@ -1,39 +1,4 @@
-### Page Templates
 
-Dust
-Pages / Partials
-Layouts
-
-#### Global Config
-
-{data.global} = config.global
-
-```
-"global" : {
-  "baseUrl": "http://www.example.com"
-}
-```
-
-#### Example Page Template
-
-```js
-  {
-      "page": {
-          "name": "Car Reviews",
-          "description": "A collection of car reviews.",
-          "language": "en",
-          "cache": true
-      },
-      "route": "/car-reviews/:make/:model", // route configuration (optional)
-      "template": "car-reviews.dust", // template filename (optional)
-      "datasources": [ // specifies attached data sources
-          "car-makes",
-          "car-models"
-      ],
-      "events": [ ]
-  }
-
-```
 
 #### Dust Helpers
 
@@ -41,7 +6,7 @@ https://www.npmjs.com/package/common-dustjs-helpers
 
 ##### Truncate
 
-Returns the supplied 'data' parameter truncated using the supplied 'length' parameter 
+Returns the supplied 'data' parameter truncated using the supplied 'length' parameter
 
 ###### Usage
 

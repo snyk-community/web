@@ -4,15 +4,10 @@
 
 * [Pages](https://github.com/dadi/web/blob/docs/docs/pages.md)
 * [Routing](https://github.com/dadi/web/blob/docs/docs/routing.md)
-  * Creating pages
-  * Routes
+* [Views](https://github.com/dadi/web/blob/docs/docs/views.md)
+  * [Page Templates](https://github.com/dadi/web/blob/docs/docs/views#page-templates.md)
+* Creating pages
   * [ ] Static Pages
-* [ ] Views
-  * Layouts
-  * Page Templates
-  * Partial Templates
-  * Helpers
-  * Filters
 * [ ] Data
   * Datasources
   * Globals

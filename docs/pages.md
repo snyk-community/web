@@ -121,6 +121,7 @@ For detailed documentation of routing, see [Routing](https://github.com/dadi/web
 
 ### Caching
 
+For detailed documentation of page caching, see [Page Caching](https://github.com/dadi/web/blob/docs/docs/caching.md#page-caching).
 
 ### POST
 
