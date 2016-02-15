@@ -3,6 +3,7 @@
 ## Core Concepts
 
 * [Pages](https://github.com/dadi/web/blob/docs/docs/pages.md)
+* [Routing](https://github.com/dadi/web/blob/docs/docs/routing.md)
   * Creating pages
   * Routes
   * [ ] Static Pages

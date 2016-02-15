@@ -11,9 +11,6 @@ DADI Web uses the [express-session](https://github.com/expressjs/session) librar
 * [Advanced Page Configuration](#advanced-page-configuration)
 * [Configuration Properties](#configuration-properties)
 * [Routing](#routing)
-  * [Dynamic route segments](#dynamic-route-segments)
-  * [Multi-route pages](#multi-route-pages)
-  * [Route constraints](#route-constraints)
 * [Caching](#caching)
 
 ### Page Specification
@@ -104,89 +101,16 @@ events           || Array | `[]`
 
 ### Routing
 
-The `route.path` and `route.paths` properties allow customising the page's route to specify the URL(s) that match the page.
-
-This property allows for an array of URL formats to enable multi-page routing. A value such as `"route": { "path": "/books" }` will be resolved at startup to `"route": { "paths": ["/books"] }`. Both forms are considered valid.
-
-A page's default route is a value matching the page name. For example if the page name is `books` the route property becomes:
+A page's default route is a value matching the page name. For example if the page name is `books` the page will be available in the browser at `/books`. The page specification's route property becomes:
 
 ```js
 "route": {
-  	"paths": ["/books"]
+  "paths": ["/books"]
 }
 ```
 
-**Note:** DADI Web uses the [Path to Regexp](https://github.com/pillarjs/path-to-regexp) library when parsing routes. More information on parameter usage can be found in the Github repository.
+For detailed documentation of routing, see [Routing](https://github.com/dadi/web/blob/docs/docs/routing.md#page-routing).
 
-#### Dynamic route segments and named parameters
-
-Routes may contain dynamic segments or named parameters which are resolved from the request URL and can be utilised by the datasources and events attached to the page.
-
-For example a page with the route `/books/:title` will cause the page to be loaded for any request matching this format. DADI Web will extract the `:title` parameter and add it to the `req.params` object, making it available for use in the page's attached datasources and events.
-
-The following URLs all match the above page's route:
-
-URL       | Named Parameters        | Request Parameters         
----------------|----------------------|-----
-/books/war-and-peace           |    :title = war-and-peace | ```req.params = { title: "war-and-peace" } ```
-/books/sisters-brothers           |    :title = sisters-brothers | ```req.params = { title: "sisters-brothers" } ```
-
-**Example**
-```js
-"route": {
-  "path": "/people/:id"
-}
-```
-
-> See [Datasource Specification](datasource_specification.md) for more information regarding the use of named parameters.
-
-
-##### Optional Parameters
-
-Parameters can be made optional by adding a question mark (?).
-
-For example the route `/books/:page?` will match requests in both the following formats:
-
-URL       | Named Parameters                 
-:---------------|:---------------------------
-/books |
-/books/2 | :page = 2
-
-
-#### Multi-route pages
-
-```js
-"route": {
-  "paths": ["/people", "/people/:id"]
-}
-```
-
-#### Route Constraints
-
-In the case of ambiguous routes it is possible to provide DADI Web with a constraint function or datasource to check a matching route against some business logic or database records.
-
-Returning `true` from a constraint instructs DADI Web that this is the correct route.
-
-Returning `false` from a constraint instructs DADI Web to try the next matching route (or return a 404 if there are no further matching routes).
-
-Constraints for ambiguous routes are added as a property in the page specification file:
-
-```js
-"route": {
-  "path": "/:people",
-  "constraint": "nextIfNotPeople"
-}
-```
-
-#### Using `toPath()`
-
-```js
-var app = require('dadi-web');
-var page = app.getComponent('person');
-var url = page.toPath({ id: '1234' });
-
-// returns "/person/1234"
-```
 
 ### Templates
 
