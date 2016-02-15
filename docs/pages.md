@@ -27,8 +27,8 @@ my-web/
     datasources/      # datasource specifications
     events/           # event files
     pages/            # page specifications        
-      people.json     # page specification file
       people.dust     # page template file
+      people.json     # page specification file
 ```
 
 #### Basic Page Configuration
