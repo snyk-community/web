@@ -7,23 +7,19 @@
 * [Views](https://github.com/dadi/web/blob/docs/docs/views.md)
   * [Page Templates](https://github.com/dadi/web/blob/docs/docs/views#page-templates.md)
 * Creating pages
-  * [ ] Static Pages
-* [ ] Data
+  * Static Pages
+* Data
   * Datasources
   * Globals
 * [Logging](https://github.com/dadi/web/blob/docs/docs/logging.md)
-* [ ] Middleware
+* Middleware
   * Creating middleware
-* [ ] Security
+* Security
   * CORS
 * [Sessions](https://github.com/dadi/web/blob/docs/docs/sessions.md)
-* [ ] Caching
+* Caching
 * [Development](https://github.com/dadi/web/blob/docs/docs/development.md)
 * [Contributing](https://github.com/dadi/web/blob/docs/docs/contributingGuidelines.md)
-
-
-##### Is something missing?
-If you notice something we've missed or could be improved on, please follow this link and submit a pull request to the sails-docs repo. Once we merge it, the changes will be reflected on the website the next time it is deployed.
 
 ## Contents
 
@@ -43,13 +39,11 @@ If you notice something we've missed or could be improved on, please follow this
 
 ## Overview
 
-DADI Web is built on Node.JS. It is a high performance schema-less templating layer designed in support of API-first development and the principle of COPE.
+DADI Web is a high performance schema-less templating layer built on Node.JS and designed in support of API-first development and the principle of COPE.
 
-[TODO]
-It can operate as a stand alone platform or in conjunction with [Serama](https://github.com/dadi-framework/serama) as a full stack web application.
+It can operate as a stand alone platform or in conjunction with [DADI API](https://github.com/dadi/api) as a full stack web application.
 
-[TODO]
-DADI Web is part of [dadi](https://github.com/dadi/), a suite of components covering the full development stack, built for performance and scale.
+DADI Web is part of [DADI](https://github.com/dadi/), a suite of components covering the full development stack, built for performance and scale.
 
 ### Component Terminology
 
@@ -64,13 +58,6 @@ Unless a custom route has been specified in the page descriptpr, the new page wi
 
 
 Multiple datasource files (`workspace/datasources/{datasourcename}.json`) can be attached to a page. Each datasource file describes which Serama endpoint to use, which filters to use, how many records to return etc. A full list of options can be found in the [Datasource Specification](datasource_specification.md) document.
-
-#### Pages and Partials
-Pages are the main template files. Templating is based around the [DustJS](http://akdubya.github.io/dustjs/) templating language.
-
-Partials are reusable template files that may be referenced from the main page templates. Partials may also contain *DustJS* code.
-
-Pages and partials have access to the data loaded in datasources and events.
 
 ###### Error Pages
 
@@ -151,6 +138,9 @@ The `docs/` directory contains additional documentation on the component parts o
 * [Logging](docs/logging.md)
 
 Feel free to contact the dadi core development team on team@bant.am with questions.
+
+### Is something missing?
+If you notice something we've missed or could be improved on, please follow this link and submit a pull request to the sails-docs repo. Once we merge it, the changes will be reflected on the website the next time it is deployed.
 
 
 ### Contributing
