@@ -97,6 +97,7 @@ contentType      || String | `"text/html"`
 template         || String | `pageName.dust`
 datasources      || Array | `[]`
 events           || Array | `[]`
+requiredDatasources | An array of datasources which must contain results, otherwise a 404 error is returned | Array | `[]`
 
 
 ### Routing
@@ -117,6 +118,9 @@ For detailed documentation of routing, see [Routing](https://github.com/dadi/web
 
 ### Data
 #### Datasources
+
+#### Required Datasources
+
 #### Events
 
 ### Caching
