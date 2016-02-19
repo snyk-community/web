@@ -1,11 +1,22 @@
-### Events
+# DADI Web
 
-#### More on Events
+## Events
 
-Events are server side JavaScript and can add additional functionality to a page/dust template. Events can serve as a useful way to implement logic to a logicless Dust template.
+### Overview
+
+Events are server side Javascript that can add additional functionality to a page. Events can serve as a useful way to implement logic to a logicless Dust template.
+
+```
+my-web/
+  app/
+    datasources/      
+    events/           
+      addAuthorInformation.js      # an Event file
+    pages/            
+```
 
 Use case:
-A Rosecomb developer would like count how many people clicked on a 'plus' button.
+A developer would like count how many people clicked on a 'plus' button.
 
 To achieve this he has to create a new event and attach it to the page where he has the 'plus' button.
 
@@ -13,26 +24,26 @@ The developer then implements a code in the event which will look for specific e
 
 The developer then returns the updated counter number from the event which is made accessible within the Dust template.
 
-
-Events are assigned to pages in the page descriptor file.
+Events are added to pages in the page specification.
 
 ```
 {
-    "page": {
-      "name": "Car Reviews",
-      "description": "A collection of car reviews.",
-      "language": "en",
-      "cache": true
-    },
-    "route": "/car-reviews/:make/:model",
-    "template": "car-reviews.dust",
-    "datasources": [
-      "car-makes",
-      "car-models"
-    ],
-    "events": [
-		  "myCustomEvent"
-    ]
+  "page": {
+    "name": "Book Reviews",
+    "description": "A collection of book reviews.",
+    "language": "en"
+  },
+  "settings": {
+    "cache": true
+  },
+  "route": "/reviews",
+  "template": "book-reviews.dust",
+  "datasources": [
+    "books"
+  ],
+  "events": [
+    "addAuthorInformation"
+  ]
 }
 
 ```
