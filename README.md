@@ -10,7 +10,7 @@
   * Static Pages
 * Data
   * [Datasources](https://github.com/dadi/web/blob/docs/docs/datasources.md)
-  * Events
+  * [Events](https://github.com/dadi/web/blob/docs/docs/events.md)
   * Globals
 * [Logging](https://github.com/dadi/web/blob/docs/docs/logging.md)
 * Middleware
@@ -18,14 +18,13 @@
 * Security
   * CORS
 * [Sessions](https://github.com/dadi/web/blob/docs/docs/sessions.md)
-* Caching
+* [Caching](https://github.com/dadi/web/blob/docs/docs/caching.md)
 * [Development](https://github.com/dadi/web/blob/docs/docs/development.md)
 * [Contributing](https://github.com/dadi/web/blob/docs/docs/contributingGuidelines.md)
 
 ## Contents
 
 * [Overview](#overview)
-* [Datasources](docs/datasource_specification.md)
 * [Setup and installation](#setup-and-installation)
 * [Configuration](#configuration)
 * [Running the demo application](#running-the-demo-application)
@@ -47,18 +46,6 @@ It can operate as a stand alone platform or in conjunction with [DADI API](https
 DADI Web is part of [DADI](https://github.com/dadi/), a suite of components covering the full development stack, built for performance and scale.
 
 ### Component Terminology
-
-#### Page descriptors
-These files describe the application's pages and the routes which load them. Datasources and events used by the page are specified within these files.
-
-[TODO] Rosecomb monitors the `workspace` folder for changes and will automatically reload pages and templates when these files change.
-
-New pages can be initialised by simply creating new page descriptor and template files in `workspace/pages/`. A new page descriptor should take the format `{pagename}.json`. It should either reference an existing template file or you can create a new one in `workspace/pages/` with the format `{pagename}.dust`.
-
-Unless a custom route has been specified in the page descriptpr, the new page will be availabe at `http://www.example.com/{pagename}`.
-
-
-Multiple datasource files (`workspace/datasources/{datasourcename}.json`) can be attached to a page. Each datasource file describes which Serama endpoint to use, which filters to use, how many records to return etc. A full list of options can be found in the [Datasource Specification](datasource_specification.md) document.
 
 ###### Error Pages
 
