@@ -21,6 +21,8 @@ Page Specifications exist as JSON files in your application's `pages` folder. Th
 
 Template files are stored in the same folder as the page specifications and have a `.dust` extension. Unless the page specification contains an explicit `template` property, the template name should match the page specification name. See [Views](https://github.com/dadi/web/blob/docs/docs/views.md#page-templates) for further documentation.
 
+[TODO] DADI Web monitors the `app` folder for changes and will automatically reload pages and templates when these files change.
+
 ```
 my-web/
   app/
@@ -41,12 +43,8 @@ my-web/
     "description": "A page for displaying People records.",
     "language": "en"
   },
-  "datasources": [
-
-  ],
-  "events": [
-
-  ]
+  "datasources": [ ],
+  "events": [ ]
 }
 ```
 
@@ -73,9 +71,15 @@ my-web/
   "datasources": [
     "allPeople"
   ],
+  "requiredDatasources": [
+    "allPeople"
+  ],
   "events": [
     "processPeopleData"
-  ]
+  ]  
+  "preloadEvents": [
+    "geolocate"
+  ],
 }
 ```
 
@@ -96,9 +100,9 @@ route            || String | `/pageName`
 contentType      || String | `"text/html"`
 template         || String | `pageName.dust`
 datasources      || Array | `[]`
+requiredDatasources  | An array containing the Datasources that must return data for the page to function. If any of the listed Datasources return no results, a 404 is returned | Array | `[]`
 events           || Array | `[]`
-requiredDatasources | An array of datasources which must contain results, otherwise a 404 error is returned | Array | `[]`
-
+preloadEvents    | An array containing the Events that should be executed before the rest of the page's Datasources and Events | Array | `[]`
 
 ### Routing
 
@@ -112,22 +116,39 @@ A page's default route is a value matching the page name. For example if the pag
 
 For detailed documentation of routing, see [Routing](https://github.com/dadi/web/blob/docs/docs/routing.md#page-routing).
 
-
 ### Templates
 
+[TODO]
 
 ### Data
+
+[TODO]
+
 #### Datasources
+
+[TODO]
 
 #### Required Datasources
 
+[TODO]
+
+#### Preload Events
+
+[TODO]
+
 #### Events
 
+[TODO]
+
 ### Caching
+
+[TODO]
 
 For detailed documentation of page caching, see [Page Caching](https://github.com/dadi/web/blob/docs/docs/caching.md#page-caching).
 
 ### POST
+
+[TODO]
 
 so... all you need to do is handle the request in an event
 
