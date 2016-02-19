@@ -9,7 +9,8 @@
 * Creating pages
   * Static Pages
 * Data
-  * Datasources
+  * [Datasources](https://github.com/dadi/web/blob/docs/docs/datasources.md)
+  * Events
   * Globals
 * [Logging](https://github.com/dadi/web/blob/docs/docs/logging.md)
 * Middleware
@@ -130,7 +131,6 @@ If a request is made to `http://localhost:3000/articles` the application takes t
 The `docs/` directory contains additional documentation on the component parts of the system:
 
 * [Configuration](docs/configuration.md)
-* [Datasources](docs/datasource_specification.md)
 * [Events](docs/events.md)
 * [Pages](docs/page_specification.md)
 * [Page Templates](docs/page_templates.md)
