@@ -295,7 +295,7 @@ To query the models collection based on the above data being returned, add a `ch
   "datasource": {
      "key": "models",
      "source": {
-         "endpoint": "1.0/car-data/models"
+       "endpoint": "1.0/car-data/models"
      },
       "chained": {
         "datasource": "makes",
@@ -343,6 +343,6 @@ If your query parameter must be passed to the endpoint as an integer, add a `typ
 }
 ```
 
-#### Caching
+### Caching
 
 [TODO]
