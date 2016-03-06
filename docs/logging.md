@@ -6,6 +6,7 @@
 * [Default Configuration](#default-configuration)
 * [Configuration Properties](#configuration-properties)
 * [Request Logging](#request-logging)
+* Log Rotation
 * [Viewing the logs](#viewing-the-logs)
 
 ### Basic Logging
@@ -25,6 +26,8 @@ DADI Web checks for the existence of the configured log path at startup, and cre
   "path": "./log",
   "filename": "web",
   "extension": "log",
+  "fileRotationPeriod": "1d",
+  "fileRetentionCount": 7,
   "accessLog": {
     "enabled": true,
     "fileRotationPeriod": "1d",
@@ -46,6 +49,8 @@ level            | Sets the logging level   | String     | "info" | "warn"
 path            | The path relative to the root of the application where log files should be stored   | String     | "./log" | "/var/log/web"
 filename            |     | String     |"web" | "your-application-name"
 extension            |     | String     |"log" | "txt"
+fileRotationPeriod            | The period at which to rotate the log file. This is a string of the format '$number$scope' where '$scope' is one of 'ms' (milliseconds), 'h' (hours), 'd' (days), 'w' (weeks), 'm' (months), 'y' (years).  | String     | "" (disabled) | "1w", "2w". In addition, the following names can be used "hourly", "daily", "weekly", "monthly", "yearly".
+fileRetentionCount            | The number of rotated log files to keep  | Number     | 7 | 14
   -          |    |   |  |
 **accessLog**            | **Allows configuration of HTTP request logging**   |   |  |
 accessLog.enabled            | If true, HTTP requests are logged to a separate file. The filename used will be a combination of `logging.filename` + access + `logging.extension`. For example, `web.access.log`  | Boolean     | true |
@@ -71,13 +76,13 @@ log.error(new Error('Something bad happened'));
 
 #### Adding a module identifier to log records
 
-To make it easier to identify log records from your own modules or events, you can create a child logger from the main DADI Web log module.
+To make it easier to identify log records from your own modules or events, pass a `module` property into the log call:
 
 ```
 var Logger = require('dadi-api').Log;
-var log = Logger.get().child( { module: 'your module' } );
+var log = Logger.get();
 
-log.info('Something worth logging');
+log.info({ module: 'your module' }, 'Something worth logging');
 ```
 
 Log records created using the above child logger will include a property containing the specified module name:
@@ -130,7 +135,9 @@ For example:
 * `http_referer (optional)`:
 * `http_user_agent`: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.86 Safari/537.36
 
+### Log Rotation
 
+[TODO]
 
 ### Viewing the logs
 
