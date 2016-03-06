@@ -1,140 +1,45 @@
 # DADI Web
 
-## Core Concepts
-
-* [Pages](https://github.com/dadi/web/blob/docs/docs/pages.md)
-* [Routing](https://github.com/dadi/web/blob/docs/docs/routing.md)
-* [Views](https://github.com/dadi/web/blob/docs/docs/views.md)
-  * [Page Templates](https://github.com/dadi/web/blob/docs/docs/views#page-templates.md)
-* Creating pages
-  * Static Pages
-* Data
-  * [Datasources](https://github.com/dadi/web/blob/docs/docs/datasources.md)
-  * [Events](https://github.com/dadi/web/blob/docs/docs/events.md)
-  * Globals
-* [Logging](https://github.com/dadi/web/blob/docs/docs/logging.md)
-* Middleware
-  * Creating middleware
-* Security
-  * CORS
-* [Sessions](https://github.com/dadi/web/blob/docs/docs/sessions.md)
-* [Caching](https://github.com/dadi/web/blob/docs/docs/caching.md)
-* [Development](https://github.com/dadi/web/blob/docs/docs/development.md)
-* [Contributing](https://github.com/dadi/web/blob/docs/docs/contributingGuidelines.md)
-
-## Contents
-
-* [Overview](#overview)
-* [Setup and installation](#setup-and-installation)
-* [Configuration](#configuration)
-* [Running the demo application](#running-the-demo-application)
-* [Running the server](#running-the-server)
-* [Further reading](#further-reading)
-
-## TODO
-* Add config documentation for new "paths" block, and the deprecated `workspace` default
-* Sort out sample public & workspace folders
-* Find somewhere for the debug assets
-* Ensure demo app runs - perhaps add this to the generator and not the main codebase
-
 ## Overview
 
-DADI Web is a high performance schema-less templating layer built on Node.JS and designed in support of API-first development and the principle of COPE.
-
-It can operate as a stand alone platform or in conjunction with [DADI API](https://github.com/dadi/api) as a full stack web application.
+DADI Web is a high performance, schema-less templating layer designed in support of API-first development and the principle of COPE. Built on Node.JS, it can operate as a stand-alone platform or in conjunction with [DADI API](https://github.com/dadi/api) as a full stack web application.
 
 DADI Web is part of [DADI](https://github.com/dadi/), a suite of components covering the full development stack, built for performance and scale.
 
-### Component Terminology
+* [Setup and installation](#setup-and-installation)
+* [Configuration](#configuration)
+* [Core Concepts](#core-concepts)
+* [Contributing to DADI Web](#contributing-to-dadi-web)
 
-###### Error Pages
+## Setup and installation
 
-###### _HTTP 404 Not Found_
-To enable a custom 404 Not Found error page, add a page descriptor and template to the pages directory:
+## Configuration
 
-```
-workspace/pages/404.json
-workspace/pages/404.dust
-```
+* [Configuration](https://github.com/dadi/web/blob/docs/docs/configuration.md)
 
-404 templates have access to datasource and event data in the same way as standard pages.
+## Core Concepts
 
+* [Pages](https://github.com/dadi/web/blob/docs/docs/pages.md)
+* [Views](https://github.com/dadi/web/blob/docs/docs/views.md)
+* [Routing](https://github.com/dadi/web/blob/docs/docs/routing.md)
+* [Datasources](https://github.com/dadi/web/blob/docs/docs/datasources.md)
+* [Events](https://github.com/dadi/web/blob/docs/docs/events.md)
+* [Logging](https://github.com/dadi/web/blob/docs/docs/logging.md)
+* Middleware (TODO)
+* Security (TODO)
+* [Sessions](https://github.com/dadi/web/blob/docs/docs/sessions.md)
+* [Caching](https://github.com/dadi/web/blob/docs/docs/caching.md)
 
-### File structure
-```  
-  dadi/main.js
-  workspace/datasources/{datasource name}.json
-  workspace/events/{event name}.json
-  workspace/pages/{page name}.dust
-  workspace/pages/{page name}.json
-  workspace/partials/{partial name}.dust
-```
+## Contributing to DADI Web
 
-### Setup and installation
+We welcome any suggestions for improvement. Please raise an issue or a feature request, or submit a pull request. All new code should be accompanied by unit and/or acceptance tests. 
 
-	[sudo] npm install
+* [Development](https://github.com/dadi/web/blob/docs/docs/development.md)
+* [Contributing Guidelines](https://github.com/dadi/web/blob/docs/docs/contributingGuidelines.md)
 
-### Configuration
+## Is something missing?
 
-#### File structure
-```  
-  config.js
-  config/config.development.json
-  config/config.test.json
-  config/config.staging.json
-  config/config.production.json
-```
-
-See [Configuration](docs/configuration.md) for more information and a sample configuration file.
-
-### Running the demo application
-
-
-  node demo/main.js
-
-
-### Running the server
-
-[TODO]
-Rosecomb expects the Serama API to be running locally on port 3001. Start the Serama server before running Rosecomb.
-
-	npm start
-
-
-### How it works
-
-The `workspace` directory contains the pages, partials and datasources required to display data retrieved from the Serama API.
-
-Each page is defined in a JSON file specifying the datasources that will retrieve the data for display.
-
-A datasource is a JSON file specifying the API endpoint to connect to along with parameters to use when querying the API.
-
-### Example
-
-If a request is made to `http://localhost:3000/articles` the application takes the `articles` parameter and looks for an `articles.json` page descriptor in `workspace/pages`. Any datasources that page descriptor specifies are loaded from `workspace/datasources` and the data is retrieved from the datasource's API endpoint. In order to render the returned data to the browser, a Dust template must exist in `workspace/pages` with the same name as the requested page, e.g. `articles.dust`.
-
-### Further Reading
-
-The `docs/` directory contains additional documentation on the component parts of the system:
-
-* [Configuration](docs/configuration.md)
-* [Events](docs/events.md)
-* [Pages](docs/page_specification.md)
-* [Page Templates](docs/page_templates.md)
-* [Routing](docs/routing.md)
-* [Logging](docs/logging.md)
-
-Feel free to contact the dadi core development team on team@bant.am with questions.
-
-### Is something missing?
-If you notice something we've missed or could be improved on, please follow this link and submit a pull request to the sails-docs repo. Once we merge it, the changes will be reflected on the website the next time it is deployed.
-
-
-### Contributing
-
-Very daring.
-
-Any new feature, enhancement or bug fix should be accompanied by unit and/or acceptance tests. Fork, hack, add tests, then send us a pull request :)
+If you notice something we've missed or could be improved on please submit a pull request to the `docs` branch of the DADI Web repository. Once we merge it, the changes will be reflected on the website the next time it is deployed.
 
 ## Licence
 

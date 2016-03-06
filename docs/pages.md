@@ -12,6 +12,8 @@ DADI Web uses the [express-session](https://github.com/expressjs/session) librar
 * [Configuration Properties](#configuration-properties)
 * [Routing](#routing)
 * [Caching](#caching)
+* Static Pages (TODO)
+* Error Pages
 
 ### Page Specification
 
@@ -157,3 +159,16 @@ so... all you need to do is handle the request in an event
 var query1 = req.body.var1;
 var query2 = req.body.var2;
 ```
+
+
+### Error Pages
+
+#### _HTTP 404 Not Found_
+To enable a custom 404 Not Found error page, add a page descriptor and template to the pages directory:
+
+```
+workspace/pages/404.json
+workspace/pages/404.dust
+```
+
+404 templates have access to datasource and event data in the same way as standard pages.

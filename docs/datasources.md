@@ -33,8 +33,7 @@ my-web/
     },
     "paginate": true,
     "count": 5,
-    "sort": [
-      { "field": "name", "order": "desc" }
+    "sort": { "name": 1 },
     ],
     "filter": {},
     "fields": {}
@@ -72,9 +71,7 @@ my-web/
     },
     "paginate": true,
     "count": 5,
-    "sort": [
-      { "field": "name", "order": "desc" }
-    ],
+    "sort": { "name": -1 },
     "filter": {},
     "fields": {"title": 1, "author_id": 1},
     "requestParams": [
@@ -114,9 +111,7 @@ my-web/
     },
     "paginate": true,
     "count": 5,
-    "sort": [
-      { "field": "name", "order": "desc" }
-    ],
+    "sort": { "name": -1 },
     "filter": {},
     "fields": {"title": 1, "author_id": 1},
     "requestParams": [
@@ -136,7 +131,7 @@ key           | Short identifier of the datasource. This value is used in the pa
 name           | This is the name of the datasource, it will be displayed on the front-end of the gui   |               | Books
 paginate           |    | true              | true
 count           | Number of items to return from the endpoint per page. If set to '0' then all results will be returned    | 20              | 5
-sort           | An array of fields to order the result set by |     | [ { "field": "title", "order": "asc" } ]
+sort           | A JSON object with fields to order the result set by | {} // unsorted     | `{ "title": 1 } // sort by title ascending`, `{ "title": -1 } // sort by title descending`
 filter           | A JSON object containing a MongoDB query  |               | { "SaleDate" : { "$ne" : null} }
 fields           | Limits the fields to return in the result set   |               | { "title": 1, "author": 1 }
 requestParams           | An array of parameters the datasource can accept from the querystring   |               | [ { "param": "author", "field": "author_id" } ]
