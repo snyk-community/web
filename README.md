@@ -2,7 +2,11 @@
 
 ## Overview
 
-DADI Web is a high performance, schema-less templating layer designed in support of API-first development and the principle of COPE. Built on Node.JS, it can operate as a stand-alone platform or in conjunction with [DADI API](https://github.com/dadi/api) as a full stack web application.
+DADI Web is a high performance, schema-less templating layer built on Node.JS. it can operate as a stand-alone platform or in conjunction with [DADI API](https://github.com/dadi/api) as a full stack web application.
+
+DADI Web makes it easy to build custom enterprise-grade Node.JS applications. Easily create static pages or connect to APIs to generate data-driven pages giving you the power to search, paginate, sort and filter your data.
+
+DADI Web uses LinkedIn's Dust templating language which providing a simple yet powerful template layer for displaying your data. It has built in support for: Rotating log files, Nginx-style HTTP access logs, GZip compression, caching by mime-type, URL rewriting, database-backed sessions and more.
 
 DADI Web is part of [DADI](https://github.com/dadi/), a suite of components covering the full development stack, built for performance and scale.
 
@@ -32,7 +36,7 @@ DADI Web is part of [DADI](https://github.com/dadi/), a suite of components cove
 
 ## Contributing to DADI Web
 
-We welcome any suggestions for improvement. Please raise an issue or a feature request, or submit a pull request. All new code should be accompanied by unit and/or acceptance tests. 
+We welcome any suggestions for improvement. Please raise an issue or a feature request, or submit a pull request. All new code should be accompanied by unit and/or acceptance tests.
 
 * [Development](https://github.com/dadi/web/blob/docs/docs/development.md)
 * [Contributing Guidelines](https://github.com/dadi/web/blob/docs/docs/contributingGuidelines.md)
