@@ -4,6 +4,10 @@
 
 ### Overview
 
+* Global Events
+* Preload Events
+* Filter Events
+
 Events are server side Javascript that can add additional functionality to a page. Events can serve as a useful way to implement logic to a logicless Dust template.
 
 ```
@@ -56,8 +60,8 @@ var path = require('path');
 var http = require("http");
 var querystring = require('querystring');
 
-/* optional Rosecomb includes */
-var config = require(__dirname + '/../../config.js');
+/* optional DADI Web includes */
+var config = require('@dadi/web').Config;
 
 // the `data` parameter contains the data already loaded by
 // the page's datasources and any previous events that have fired
@@ -66,14 +70,14 @@ var Event = function (req, res, data, callback) {
 
   var result = {};
 
-  if (data.car-makes && data.car-makes.results) {
+  if (data.books && data.books.results) {
     result = {
-      carMakeFromEvent: data.car-makes.results[0].name
+      title: data.books.results[0].title
     };
   }
   else {
     result = {
-      carMakeFromEvent: "No make found in supplied data."
+      title: "Not found"
     };
   }
 
@@ -86,5 +90,4 @@ module.exports = function (req, res, data, callback) {
 };
 
 module.exports.Event = Event;
-
 ```

@@ -2,23 +2,24 @@
 
 ## Routing
 
-* [URL Rewriting](#url-rewriting)
+* [URL Rewriting](#url-rewriting-and-redirects)
 * [Page Routing](#page-routing)
   * [Dynamic route segments](#dynamic-route-segments)
   * [Multi-route pages](#multi-route-pages)
   * [Route constraints](#route-constraints)
   * [Template URL Building](#template-url-building)
 
-### URL Rewriting
+### URL Rewriting and Redirects
 
+#### URL Rewrites File
 ```
-{
-  "rewrites" : [
-    "^(.*[^/])$ $1/ [L,R=301]"
-    "^/cars/(.*)$ /cars?makeId=$1"
-  ]
-}
+^(.*[^/])$ $1/ [R=301,L]
+^/books/(.*)$ /books?authorId=$1 [R=301,L]
 ```
+
+forceLowerCase: "If true, converts URLs to lowercase and redirects"
+forceTrailingSlash: "If true, adds a trailing slash to URLs and redirects"
+stripIndexPages: "A set of filenames to remove from URLs. For example ['index.php', 'default.aspx']",
 
 ### Page Routing
 
