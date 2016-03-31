@@ -4,24 +4,24 @@
 
 ### Overview
 
-DADI Web uses the [express-session](https://github.com/expressjs/session) library to handle sessions. Visit that project's homepage for more detailed information regarding session configuration.
-
 * [Page Specification](#page-specification)
 * [Basic Page Configuration](#basic-page-configuration)
 * [Advanced Page Configuration](#advanced-page-configuration)
 * [Configuration Properties](#configuration-properties)
 * [Routing](#routing)
+* [Datasources](#datasources)
+* [Required Datasources](#required-datasources)
+* [Events](#events)
+* [Preload Events](#preload-events)
 * [Caching](#caching)
 * Static Pages (TODO)
-* Error Pages
+* Error Pages (TODO)
 
 ### Page Specification
 
 A `page` on your website consists of two files within your application's file structure: a Page Specification and a Template.
 
 Page Specifications exist as JSON files in your application's `pages` folder. The location of this folder is configurable, but defaults to `app/pages`.
-
-Template files are stored in the same folder as the page specifications and have a `.dust` extension. Unless the page specification contains an explicit `template` property, the template name should match the page specification name. See [Views](https://github.com/dadi/web/blob/docs/docs/views.md#page-templates) for further documentation.
 
 [TODO] DADI Web monitors the `app` folder for changes and will automatically reload pages and templates when these files change.
 
@@ -36,7 +36,6 @@ my-web/
 ```
 
 #### Basic Page Configuration
-
 
 ```js
 {
@@ -98,13 +97,15 @@ Property    |   Description        |  Type        | Default
  settings.beautify      || Boolean | `false`
  settings.keepWhitespace    || Boolean | If the global config has a setting for `dust.whitespace` that is used as the default, otherwise `true`
  settings.passFilters    || Boolean | `false`
-route            || String | `/pageName`
-contentType      || String | `"text/html"`
-template         || String | `pageName.dust`
-datasources      || Array | `[]`
-requiredDatasources  | An array containing the Datasources that must return data for the page to function. If any of the listed Datasources return no results, a 404 is returned | Array | `[]`
-events           || Array | `[]`
-preloadEvents    | An array containing the Events that should be executed before the rest of the page's Datasources and Events | Array | `[]`
+**route**   |  | |
+ paths  | An array of routes that this page will respond to | Array | `[/pageName]`
+ constraint | An optional function to execute to determine if the current URL matches this page | String |  
+contentType      | The Content-Type of the page | String | `"text/html"`
+template         | The filename of the template to load for the page | String | `pageName.dust`
+datasources      | An array containing the datasources that should be loaded for the page | Array | `[]`
+requiredDatasources  | An array containing the datasources that must return data for the page to function. If any of the listed datasources return no results, a 404 is returned | Array | `[]`
+events           | An array containing the events that should be executed once all the page's datasources have returned data | Array | `[]`
+preloadEvents    | An array containing the events that should be executed before the rest of the page's datasources and events | Array | `[]`
 
 ### Routing
 
@@ -120,7 +121,9 @@ For detailed documentation of routing, see [Routing](https://github.com/dadi/web
 
 ### Templates
 
-[TODO]
+Template files are stored in the same folder as the page specifications and have a `.dust` extension. Unless the page specification contains an explicit `template` property, the template name should match the page specification name.
+
+See [Views](https://github.com/dadi/web/blob/docs/docs/views.md#page-templates) for further documentation.
 
 ### Data
 
@@ -128,47 +131,63 @@ For detailed documentation of routing, see [Routing](https://github.com/dadi/web
 
 #### Datasources
 
-[TODO]
+An array containing datasources that should be executed to load data for the page.
+
+For detailed documentation of datasources, see [Datasources](https://github.com/dadi/web/blob/docs/docs/datasources.md)
+
+```js
+"datasources": [
+  "datasource-one",
+  "datasource-two"
+]
+```
 
 #### Required Datasources
 
-[TODO]
+Allows specifying an array of datasources that must return data for the page to function.
+If any of the listed datasources return no results, a 404 is returned. The datasources specified
+must exist in the `datasources` array.
 
-#### Preload Events
-
-[TODO]
+```js
+"requiredDatasources": [
+  "datasource-one"
+]
+```
 
 #### Events
 
-[TODO]
+An array containing events that should be executed after the page's datasources have loaded data.
+
+For detailed documentation of events, see [Events](https://github.com/dadi/web/blob/docs/docs/events.md)
+
+```js
+"events": [
+  "event-one",
+  "event-two",
+]
+```
+
+#### Preload Events
+
+An array containing events that should be executed before the rest of the page's datasources and events.
+
+Preload events are loaded from the filesystem in the same way as a page's regular events,
+and a Javascript file with the same name must exist in the `events` path.
+
+```js
+"preloadEvents": [
+  "preloadevent-one"
+]
+```
 
 ### Caching
 
-[TODO]
+If true the output of the page will be cached using cache settings in the main configuration file.
 
 For detailed documentation of page caching, see [Page Caching](https://github.com/dadi/web/blob/docs/docs/caching.md#page-caching).
 
-### POST
-
-[TODO]
-
-so... all you need to do is handle the request in an event
-
 ```js
-// this guy has your form data: `req.body`
-var query1 = req.body.var1;
-var query2 = req.body.var2;
+"settings": {
+  "cache": true
+}
 ```
-
-
-### Error Pages
-
-#### _HTTP 404 Not Found_
-To enable a custom 404 Not Found error page, add a page descriptor and template to the pages directory:
-
-```
-workspace/pages/404.json
-workspace/pages/404.dust
-```
-
-404 templates have access to datasource and event data in the same way as standard pages.
