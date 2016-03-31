@@ -4,6 +4,7 @@
 
 ### Overview
 
+* [Configuration](#configuration)
 * [Page Caching](#page-caching)
 * [Datasource Caching](#datasource-caching)
 * [Cache Invalidation](#cache-invalidation)
@@ -40,7 +41,13 @@ redis.port           | The port for the Redis caching service   |    6379       
 
 ### Page Caching
 
-If caching is enabled, the rendered HTML output of a page is cached. Either `directory` or `redis` caching must be enabled for this to work. The `path` specified in this configuration block is automatically created at startup if it doesn't exist.
+Controls the caching of rendered HTML output. To enable page caching, ensure that the main configuration file has either `directory` or `redis` caching enabled, and the below `cache` setting is set for the page in question.
+
+```js
+"settings": {
+  "cache": true
+}
+```
 
 ### Datasource Caching
 
