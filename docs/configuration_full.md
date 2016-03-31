@@ -119,7 +119,7 @@ secret           |    |               |         "superSecret"
 ttl           |    |               |  300      
 directory           | Configuration block for caching using a local filesystem directory   |               |
 directory.enabled           | If true, cache files will be stored on disk using the settings below. Either directory or redis caching must be enabled for caching to work.   | true              | true
-directory.path           | The directory to use for storing cache files, relative to the root of the application   |    "./cache/web"           |  
+directory.path           | The directory to use for storing cache files, relative to the root of the application. Automatically created at startup if it doesn't exist.   |    "./cache/web"           |  
 directory.extension           | The file extension to use for cache files   |    "html"           |  
 redis           | Configuration block for caching using a Redis caching service   |               |
 redis.enabled           | If true, cache files will be stored in the Redis cache store using the settings below. Either directory or redis caching must be enabled for caching to work.   | false              | true
