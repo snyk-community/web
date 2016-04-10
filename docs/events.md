@@ -4,11 +4,11 @@
 
 ### Overview
 
+Events are server side Javascript that can add additional functionality to a page. Events can serve as a useful way to implement logic to a logicless Dust template.
+
 * Global Events
 * Preload Events
 * Filter Events
-
-Events are server side Javascript that can add additional functionality to a page. Events can serve as a useful way to implement logic to a logicless Dust template.
 
 ```
 my-web/
@@ -17,6 +17,36 @@ my-web/
     events/           
       addAuthorInformation.js      # an Event file
     pages/            
+```
+
+### Global Events
+
+In main configuration file
+
+```js
+globalEvents: {
+  doc: "",
+  format: Array,
+  default: []
+}
+```
+
+### Preload Events
+
+In page specification file
+
+```js
+"preloadEvents": [
+  "preloadevent-one"
+]
+```
+
+### Filter Events
+
+In datasource specification file
+
+```js
+"filterEvent": "filterevent-one"
 ```
 
 Use case:

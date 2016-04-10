@@ -133,6 +133,7 @@ paginate           |    | true              | true
 count           | Number of items to return from the endpoint per page. If set to '0' then all results will be returned    | 20              | 5
 sort           | A JSON object with fields to order the result set by | {} // unsorted     | `{ "title": 1 } // sort by title ascending`, `{ "title": -1 } // sort by title descending`
 filter           | A JSON object containing a MongoDB query  |               | { "SaleDate" : { "$ne" : null} }
+filterEvent           | An event file to execute which will generate the filter to use for this datasource. The event must exist in the configured events path  |               | "getBookFilter"
 fields           | Limits the fields to return in the result set   |               | { "title": 1, "author": 1 }
 requestParams           | An array of parameters the datasource can accept from the querystring   |               | [ { "param": "author", "field": "author_id" } ]
 
@@ -165,9 +166,9 @@ port           |    |               | 3000
 tokenUrl           |    |               |     "/token"   
 credentials           |    |               |        { "clientId": "test123", "secret": "superSecret" }
 
-#### requestParams
+#### Passing parameters with `requestParams`
 
-An array of parameters that the datasource can accept from the querystring.
+`requestParams` is an array of parameters that the datasource can accept from the querystring.
 Used in conjunction with the `route` property in the page specification, this allows
 filters to be generated for querying the collection.
 
@@ -188,9 +189,9 @@ filters to be generated for querying the collection.
 ]
 ```
 
-| field | param |
-|--|---|
-| The collection field to filter on | The request parameter to use as the value for the filter, This must match a named parameter in the page specification's `route` property |
+| field | param
+|--|---
+| The collection field to filter on | The request parameter to use as the value for the filter, This must match a named parameter in the page specification's `route` property
 
 ###### For example, given a collection `books` with the fields `_id`, `title`
 
