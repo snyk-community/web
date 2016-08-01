@@ -127,6 +127,7 @@ allowJsonView           |  If true, allows ?json=true in the querystring to retu
 host           | The hostname or IP address to use when starting the Web server   |               | "www.example.com"
 port           | The port to bind to when starting the Web server   |               | 3000
 socketTimeoutSec  | The number of seconds to wait before closing an idle socket   |        30       | 10
+protocol | The protocol the web application will use | http | https
 sslPassphrase  |  The passphrase of the SSL private key | | secretPassword
 sslPrivateKeyPath | The filename of the SSL private key | | /etc/ssl/key.pem
 sslCertificatePath | The filename of the SSL certificate | | /etc/ssl/cert.pem
