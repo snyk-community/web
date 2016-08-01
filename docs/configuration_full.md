@@ -81,6 +81,38 @@
 }
 ```
 
+#### Example SSL Configuration
+
+```js
+{
+    "app": {
+      "name": "Project Name Here"
+    },
+    "server": {
+      "host": "127.0.0.1",
+      "port": 443,
+      "protocol": "https",
+      "sslPassphrase": "<your ssl passphrase here>",
+      "sslPrivateKeyPath": "<your ssl private key path here>",
+      "sslCertificatePath": "<your ssl certificate path here>"
+    },
+    "api": {
+      "host": "127.0.0.1",
+      "port": 3000
+    },
+    "auth": {
+      "tokenUrl":"/token",
+      "clientId":"webClient",
+      "secret":"secretSquirrel"
+    },
+    "global" : {
+      "baseUrl": "https://www.example.com"
+    },
+    "debug": true,
+    "allowJsonView": true
+}
+```
+
 #### Property Description
 
 Property       | Description                 | Default value  |  Example
@@ -95,6 +127,11 @@ allowJsonView           |  If true, allows ?json=true in the querystring to retu
 host           | The hostname or IP address to use when starting the Web server   |               | "www.example.com"
 port           | The port to bind to when starting the Web server   |               | 3000
 socketTimeoutSec  | The number of seconds to wait before closing an idle socket   |        30       | 10
+sslPassphrase  |  The passphrase of the SSL private key | | secretPassword
+sslPrivateKeyPath | The filename of the SSL private key | | /etc/ssl/key.pem
+sslCertificatePath | The filename of the SSL certificate | | /etc/ssl/cert.pem
+sslIntermediateCertificatePath | The filename of an SSL intermediate certificate, if any | | /etc/ssl/ca.pem
+sslIntermediateCertificatePaths | The filenames of SSL intermediate certificates, overrides sslIntermediateCertificate (singular) | [] | [ '/etc/ssl/ca/example.pem', '/etc/ssl/ca/other.pem' ]
 
 ###### Section: `api`
 
@@ -116,11 +153,11 @@ secret           |    |               |         "superSecret"
 
  Property       | Description                 | Default value  |  Example
 :---------------|:----------------------------|:---------------|:--------------
-ttl           |    |               |  300      
+ttl           |    |               |  300
 directory           | Configuration block for caching using a local filesystem directory   |               |
 directory.enabled           | If true, cache files will be stored on disk using the settings below. Either directory or redis caching must be enabled for caching to work.   | true              | true
-directory.path           | The directory to use for storing cache files, relative to the root of the application. Automatically created at startup if it doesn't exist.   |    "./cache/web"           |  
-directory.extension           | The file extension to use for cache files   |    "html"           |  
+directory.path           | The directory to use for storing cache files, relative to the root of the application. Automatically created at startup if it doesn't exist.   |    "./cache/web"           |
+directory.extension           | The file extension to use for cache files   |    "html"           |
 redis           | Configuration block for caching using a Redis caching service   |               |
 redis.enabled           | If true, cache files will be stored in the Redis cache store using the settings below. Either directory or redis caching must be enabled for caching to work.   | false              | true
 redis.host           | The host for the Redis caching service   |    ""           |  See example config above.
@@ -131,8 +168,8 @@ redis.port           | The port for the Redis caching service   |    6379       
 
  Property       | Description         | Default value  |  Example
 :---------------|:--------------------|:---------------|:--------------
-cache           |     |       true     | true       
-debug           |     |       true     | true       
+cache           |     |       true     | true
+debug           |     |       true     | true
 debugLevel      |                     |       "DEBUG"  | "DEBUG"
 whitespace      |                     |       true     | false
 
@@ -147,10 +184,10 @@ cacheControl   | A set of custom cache-control headers for different content typ
 
  Property       | Description                 | Default value  |  Example
 :---------------|:----------------------------|:---------------|:--------------
-enabled           | If true, logging is enabled using the following settings.   |            true   | true       
+enabled           | If true, logging is enabled using the following settings.   |            true   | true
 level           | The level at which log messages will be written to the log file.   | "info"  | "warn"
 path           | The absolute or relative path to the directory for log files.   |       "./log"        | "/data/app/log"
-filename           | The filename to use for the log files. The name you choose will be given a suffix indicating the current application environment. | "dadi-web" | "your_application_name"      
+filename           | The filename to use for the log files. The name you choose will be given a suffix indicating the current application environment. | "dadi-web" | "your_application_name"
 extension           | The extension to use for the log files.  |  "log"   | "txt"
 fileRotationPeriod           | The period at which to rotate the log file. This is a string of the format '$number$scope' where '$scope' is one of 'ms', 'h', 'd', 'w', 'm', 'y'. The following names can be used 'hourly' (= '1h'), 'daily (= '1d'), 'weekly' ('1w'), 'monthly' ('1m'), 'yearly' ('1y').   |       "1d"        | "daily"
 fileRetentionCount           | The number of rotated log files to keep. |    7           | 14
@@ -159,7 +196,7 @@ fileRetentionCount           | The number of rotated log files to keep. |    7  
 
 Property       | Description                 | Default value  |  Example
 :---------------|:----------------------------|:---------------|:--------------
-enabled           | If true, HTTP access logging is enabled. The log file name is similar to the setting used for normal logging, with the addition of 'access'. For example `dadi-web.access.log`.   |            true   | true       
+enabled           | If true, HTTP access logging is enabled. The log file name is similar to the setting used for normal logging, with the addition of 'access'. For example `dadi-web.access.log`.   |            true   | true
 fileRotationPeriod           | The period at which to rotate the access log file. This is a string of the format '$number$scope' where '$scope' is one of 'ms', 'h', 'd', 'w', 'm', 'y'. The following names can be used 'hourly' (= '1h'), 'daily (= '1d'), 'weekly' ('1w'), 'monthly' ('1m'), 'yearly' ('1y').   |       "1d"        | "daily"
 fileRetentionCount           | The number of rotated log files to keep. |    7           | 14
 kinesisStream           | An AWS Kinesis stream to write to log records to. |  ""   | "web_aws_kinesis"
