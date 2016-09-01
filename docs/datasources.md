@@ -197,7 +197,7 @@ ttl           |    |               |
 directory           | The directory to use for storing cache files, relative to the root of the application   |               | "./cache"
 extension           | The file extension to use for cache files   |               |  "json"
 
-##### Configuring external datasources
+#### Configuring external datasources
 
 External datasources may require some authentication.
 
