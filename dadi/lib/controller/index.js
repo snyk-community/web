@@ -197,10 +197,12 @@ Controller.prototype.process = function process (req, res, next) {
 
     view.setData(data)
 
-    view.render(function (err, result) {
-      if (err) return next(err)
-      return done(null, result)
-    })
+    // view.render(function (err, result) {
+    //   if (err) return next(err)
+    //   return done(null, result)
+    // })
+  
+    view.render(req, res)
   })
 }
 
